@@ -7,7 +7,7 @@ COPY requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
 #Copy app code
-COPY app.py
+COPY app.py .
 
 #Port used by cloud run/GKE
 ENV PORT=8080
