@@ -1,0 +1,14 @@
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'us-central1-docker.pkg.dev/gcp-devop-6969/python-app-image/app-image:tag1', '.']
+
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'us-central1-docker.pkg.dev/gcp-devop-6969/python-app-image/app-image:tag1', '.']
+
+images:
+- 'us-central1-docker.pkg.dev/gcp-devop-6969/python-app-image/app-image:tag1'
+
+#optional timeout
+
+options:
+  logging: CLOUD_LOGGING_ONLY
