@@ -13,4 +13,4 @@ COPY app.py .
 ENV PORT=8080
 
 #Command to run the app
-CMD["python", "app.py"]
+CMD ["python", "app.py"]
