@@ -5,7 +5,7 @@ steps:
 
 # Push image -- Even if the below push is not available, it will automatically push with the images tag
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'us-central1-docker.pkg.dev/gcp-devop-6969/python-app-image/app-image:tag1']
+  args: ['push', 'us-central1-docker.pkg.dev/gcp-devop-6969/python-app-image/app-image:tag2']
 
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:slim'
   id: 'deploy-cloudRun'
