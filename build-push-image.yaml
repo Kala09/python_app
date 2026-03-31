@@ -1,7 +1,9 @@
 steps:
+# build image
 - name: 'gcr.io/cloud-builders/docker'
   args: ['build', '-t', 'us-central1-docker.pkg.dev/gcp-devop-6969/python-app-image/app-image:tag1', '.']
 
+# Push image
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'us-central1-docker.pkg.dev/gcp-devop-6969/python-app-image/app-image:tag1']
 

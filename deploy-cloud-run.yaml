@@ -1,0 +1,34 @@
+steps:
+# build image
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'us-central1-docker.pkg.dev/gcp-devop-6969/python-app-image/app-image:tag2', '.']
+
+# Push image -- Even if the below push is not available, it will automatically push with the images tag
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'us-central1-docker.pkg.dev/gcp-devop-6969/python-app-image/app-image:tag1']
+
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:slim'
+  id: 'deploy-cloudRun'
+  entrypoint: 'bash'
+  args:
+    - '-c'
+    - |
+      echo "Deploying image to Cloud Run"
+      gcloud run deploy my-service \
+        --image=gcr.io/$PROJECT_ID/my-image \
+        --region=us-central1 \
+        --platform=managed \
+        --allow-unauthenticated \
+        --port=8080
+      echo "Deployed Successfully"
+
+
+
+
+images:
+- 'us-central1-docker.pkg.dev/gcp-devop-6969/python-app-image/app-image:tag2'
+
+###Optional - timeout
+
+options:
+  logging: CLOUD_LOGGING_ONLY
